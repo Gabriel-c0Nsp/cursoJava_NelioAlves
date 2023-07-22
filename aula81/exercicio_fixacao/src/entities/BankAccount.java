@@ -52,10 +52,6 @@ public class BankAccount {
     return balance;
   }
 
-  public void setBalance(double balance) {
-    this.balance = balance;
-  }
-
   public double getDepositValue() {
     return depositValue;
   }
@@ -65,12 +61,16 @@ public class BankAccount {
   }
 
   public double balance(double depositValue) {
-    return balance += depositValue + initialDeposit + withdrawValue;
+    return balance += depositValue + initialDeposit;
+  }
+
+  public double balance(double depositValue, double withdrawValue) {
+    return balance += depositValue + initialDeposit - withdraw(withdrawValue);
   }
 
   public double withdraw(double withdrawValue) {
     double total = 0;
-    total = (balance + withdrawValue) - 5;
+    total = (balance + withdrawValue) + 5;
     return total;
   }
 
