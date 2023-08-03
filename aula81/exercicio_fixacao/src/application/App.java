@@ -20,7 +20,7 @@ public class App {
     System.out.println("Is there an initial deposit value (y/n)?");
     String choice = scanner.next();
 
-    if (choice.equalsIgnoreCase("y")) {
+    if (choice.equalsIgnoreCase("y") || choice.equalsIgnoreCase("yes")) {
       System.out.print("Enter initial deposit: ");
       double initialDeposit = scanner.nextDouble();
       account = new BankAccount(accountNumber, ownerName, initialDeposit);
