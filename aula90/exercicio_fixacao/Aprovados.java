@@ -25,20 +25,23 @@ public class Aprovados {
       notaPrimeiroSemestre[i] = scanner.nextDouble();
       notaSegundoSemestre[i] = scanner.nextDouble();
 
-      soma += notaPrimeiroSemestre[i] + notaSegundoSemestre[i];
+      soma = notaPrimeiroSemestre[i] + notaSegundoSemestre[i];
       media = soma / 2;
       mediaAluno[i] = media;
 
       if (mediaAluno[i] >= 6) {
         alunosAprovados[i] = nome[i];
       }
-
     }
 
     System.out.println("Alunos aprovados:");
 
     for (int i = 0; i < quantidadeAlunos; i++) {
-      System.out.println(alunosAprovados[i]);
+      if (alunosAprovados[i] == null) {
+        continue;
+      } else {
+        System.out.println(alunosAprovados[i]);
+      }
     }
 
     scanner.close();
