@@ -1,8 +1,10 @@
 import java.util.Scanner;
+import java.util.Locale;
 
-public class Main {
+public class AbaixoDaMedia {
   public static void main(String[] args) {
 
+    Locale.setDefault(Locale.US);
     Scanner scanner = new Scanner(System.in);
 
     System.out.print("Quantos elementos vai ter o vetor? ");
@@ -21,14 +23,14 @@ public class Main {
 
     media = soma / N;
 
-    System.out.println("MÉDIA DO VETOR = " + media);
+    System.out.printf("MÉDIA DO VETOR = %.3f%n", media);
 
     System.out.println();
     System.out.println("ELEMENTOS ABAIXO DA MÉDIA:");
 
     for (int i = 0; i < vetor.length; i++) {
       if (vetor[i] < media) {
-        System.out.println(vetor[i]);
+        System.out.printf("%.1f%n", vetor[i]);
       }
     }
 
