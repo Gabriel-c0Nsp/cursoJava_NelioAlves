@@ -40,7 +40,7 @@ public class Main {
        for (int i = 0; i < n; i++) {
         for (int j = i + 1; j < n; j++) {
           if (room[i] > room[j]) {
-            int tempRoom = room[i];
+              int tempRoom = room[i];
               room[i] = room[j];
               room[j] = tempRoom;
 
