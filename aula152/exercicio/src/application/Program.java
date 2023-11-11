@@ -32,7 +32,6 @@ public class Program {
 
     System.out.print("Birth date (DD/MM/YYYY): ");
     String birthDateString = scanner.next();
-
     Date birthDate = sdf1.parse(birthDateString);
 
     System.out.println("Enter order data:");
@@ -47,7 +46,6 @@ public class Program {
     Client client = new Client(name, email, birthDate);
     Order order = new Order(moment, OrderStatus.valueOf(status));
 
-    OrderItem[] itemArr = new OrderItem[items];
     Product[] productArr = new Product[items];
 
     for (int i = 0; i < items; i++) {
@@ -63,12 +61,10 @@ public class Program {
       System.out.print("Quantity: ");
       int productQuantity = scanner.nextInt();
 
-      OrderItem item = new OrderItem(productQuantity, productPrice);
-
       Product product = new Product(productName, productPrice);
+      OrderItem item = new OrderItem(productQuantity, productPrice, product);
 
-      itemArr[i] = item;
-      productArr[i] = product;
+      order.addItem(item);
     } 
 
     System.out.println();
@@ -84,10 +80,8 @@ public class Program {
 
     System.out.println("Order items:");
 
-    for (int i = 0; i < items; i++) {
-      System.out.println(productArr[i].getName() + ", " + itemArr[i]);
-    }
+    order.getItems().forEach(item -> System.out.println(item));
 
-    System.out.println("Total price: " + order.total());
+    System.out.println("Total price: $" + String.format("%.2f",order.total()));
   }
 }

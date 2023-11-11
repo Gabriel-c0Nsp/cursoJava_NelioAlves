@@ -1,16 +1,20 @@
 package entities;
 
+import entities.Product;
+
 public class OrderItem {
 
   private Integer quantity;
   private Double price;
+  private Product product;
 
   public OrderItem() {
   }
 
-  public OrderItem(Integer quantity, Double price) {
+  public OrderItem(Integer quantity, Double price, Product product) {
     this.quantity = quantity;
     this.price = price;
+    this.product = product;
   }
 
   public Integer getQuantity() {
@@ -33,12 +37,21 @@ public class OrderItem {
     return quantity * price;
   }
 
+  public Product getProduct() {
+    return product;
+  }
+
+  public void setProduct(Product product) {
+    this.product = product;
+  }
+
   @Override
   public String toString() {
     StringBuilder sBuilder = new StringBuilder();
-    sBuilder.append("$" + price + ", ");
+    sBuilder.append(product.getName() + ", ");
+    sBuilder.append("$" + String.format("%.2f", price) + ", ");
     sBuilder.append("Quantity: " + quantity + ", ");
-    sBuilder.append("Subtotal: $" + subTotal());
+    sBuilder.append("Subtotal: $" + String.format("%.2f", subTotal()));
     return sBuilder.toString();
   }
 
